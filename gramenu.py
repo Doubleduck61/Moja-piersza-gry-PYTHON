@@ -11,79 +11,83 @@ while x==0:
     x=int(x)
     if x==1:
         print("[1] NOWA GRA\n")
+        petlanowagra1=1
         print("WŁAŚNIE STWORZYŁEŚ NOWĄ GRĘ!")
         print("JESTEŚ MĘŻCZYZNĄ [WYBIERZ M] CZY KOBIETĄ [WYBIERZ K]?")
         plec=input()
         nick=input("PODAJ SWÓJ NICK: ")
-        if plec=="M" or plec=="m":
-            print("WŁAŚNIE STWORZYŁEŚ POSTAĆ O PSEUDONIMIE",nick,"!")
-        elif plec=="K" or plec=="k":
-            print("WŁAŚNIE STWORZYŁAŚ POSTAĆ O PSEUDONIMIE",nick,"!")
-        else:
-            print("UTWORZONO POSTAĆ O PSEUDONIMIE",nick,"!")
-        print ("CO CHCESZ DALEJ ZROBIĆ?")
-        print("[0] WYJŚCIE")
-        print("[1] EDYTOWAĆ NAZWĘ POSTACI")
-        x=input()
-        x=int(x)
-        if x==0:
-            print("WYJŚCIE!")
-        elif x==1:
-            print("EDYTUJESZ NAZWĘ POSTACI!")
-            print("[1] ZMIANA PSEUDONIMU NA DUŻE LITERY")
-            print("[2] ZMIANA PSEUDONIMU NA MAŁE LITERY")
-            print("[3] ZMIANA PSEUDONIMU - WYBRANA LITERA JEST DUŻA,RESZTA LITER JEST MAŁA")
-            print("[4] ZMIANA PSEUDONIMU - WYBRANA LITERA JEST MAŁA,RESZTA LITER JEST DUŻA")
-            wybor=input()
-            wybor=int(wybor)
-            if wybor==1:
-                nick=nick.upper()
-                print("TWÓJ NICK ZOSTAŁ ZMIENIONY - TERAZ NAZYWASZ SIĘ",nick)
-                print("POWRÓT DO MENU")
-                x=0
-            elif wybor==2:
-                nick=nick.lower()
-                print("TWÓJ NICK ZOSTAŁ ZMIENIONY - TERAZ NAZYWASZ SIĘ",nick)
-                print("POWRÓT DO MENU")
-                x=0
-            elif wybor==3:
-                nr=input("KTÓRA LITERA TWOJEGO PSEUDONIMU MA ZOSTAĆ ZMIENIONA NA DUŻĄ? LICZYMY OD 0! - ")
-                nr=int(nr)
-                nr1=nr+1
-                nick=nick.lower()
-                ostLit=(len(nick))
-                print("TWÓJ NICK ZOSTAŁ ZMIENIONY - TERAZ NAZYWASZ SIĘ",nick[nr-nr:nr]+nick[nr:nr1].upper()+nick[nr1:ostLit].lower())
-            elif wybor==4:
-                while wybor==4:
-                    nr=input("KTÓRA LITERA TWOJEGO PSEUDONIMU MA ZOSTAĆ ZMIENIONA NA MAŁĄ? - ")
-                    nr=int(nr)
-                    if nr<=len(nick):
-                        nr1=nr+1
-                        nick=nick.upper()
-                        ostLit=(len(nick))
-                        print("TWÓJ NICK ZOSTAŁ ZMIENIONY - TERAZ NAZYWASZ SIĘ",nick[nr-nr:nr]+nick[nr:nr1].lower()+nick[nr1:ostLit].upper())
-                        zadowolony=input("CZY JESTEŚ Z NIEGO ZADOWOLONY?" )
-                        wybor=0
-                        x=0
-                    else:
-                        print("TWÓJ NICK NIE JEST TAK DŁUGI!")
-                        print("CO CHCESZ ZROBIĆ?")
-                        print("[0] WYJŚCIE DO MENU")
-                        print("[1] PONOWNA EYCJA NICKU")
-                        wybor=input()
-                        wybor=int(wybor)
-                        if wybor==1:
-                            print("PONOWNA EDYCJA NICKU")
-                            wybor=4
-                        else:
-                            print("PRZEJŚCIE DO MENU")
-                            x=0
+        while petlanowagra1==1:
+            if plec=="M" or plec=="m":
+                print("WŁAŚNIE STWORZYŁEŚ POSTAĆ O PSEUDONIMIE",nick,"!")
+            elif plec=="K" or plec=="k":
+                print("WŁAŚNIE STWORZYŁAŚ POSTAĆ O PSEUDONIMIE",nick,"!")
             else:
-                print("BŁĘDNA KOMENA, DANE NIE ZOSTANĄ ZAPISANE. POWRÓT DO MENU!")
-                x=0;
-        else:
-            print("BŁĘDNA KOMENDA! PRZEKIEROWANIE DO MENU!")
-            x=int(0);
+                print("UTWORZONO POSTAĆ O PSEUDONIMIE",nick,"!")
+            print ("CO CHCESZ DALEJ ZROBIĆ?")
+            print("[0] WYJŚCIE")
+            print("[1] EDYTOWAĆ NAZWĘ POSTACI")
+            x=input()
+            x=int(x)
+            if x==0:
+                print("WYJŚCIE!\n")
+                petlanowagra1=0
+            elif x==1:
+                print("EDYTUJESZ NAZWĘ POSTACI!")
+                print("[1] ZMIANA PSEUDONIMU NA DUŻE LITERY")
+                print("[2] ZMIANA PSEUDONIMU NA MAŁE LITERY")
+                print("[3] ZMIANA PSEUDONIMU - WYBRANA LITERA JEST DUŻA,RESZTA LITER JEST MAŁA")
+                print("[4] ZMIANA PSEUDONIMU - WYBRANA LITERA JEST MAŁA,RESZTA LITER JEST DUŻA")
+                wybor=input()
+                wybor=int(wybor)
+                if wybor==1:
+                    nick=nick.upper()
+                    print("TWÓJ NICK ZOSTAŁ ZMIENIONY - TERAZ NAZYWASZ SIĘ",nick)
+                    print("POWRÓT DO MENU")
+                    x=0
+                elif wybor==2:
+                    nick=nick.lower()
+                    print("TWÓJ NICK ZOSTAŁ ZMIENIONY - TERAZ NAZYWASZ SIĘ",nick)
+                    print("POWRÓT DO MENU")
+                    x=0
+                elif wybor==3:
+                    nr=input("KTÓRA LITERA TWOJEGO PSEUDONIMU MA ZOSTAĆ ZMIENIONA NA DUŻĄ? LICZYMY OD 0! - ")
+                    nr=int(nr)
+                    nr1=nr+1
+                    nick=nick.lower()
+                    ostLit=(len(nick))
+                    nick=nick[nr-nr:nr]+nick[nr:nr1].upper()+nick[nr1:ostLit].lower()
+                    print("TWÓJ NICK ZOSTAŁ ZMIENIONY - TERAZ NAZYWASZ SIĘ",nick)
+                elif wybor==4:
+                    while wybor==4:
+                        nr=input("KTÓRA LITERA TWOJEGO PSEUDONIMU MA ZOSTAĆ ZMIENIONA NA MAŁĄ? - ")
+                        nr=int(nr)
+                        if nr<=len(nick):
+                            nr1=nr+1
+                            nick=nick.upper()
+                            ostLit=(len(nick))
+                            nick=nick[nr-nr:nr]+nick[nr:nr1].lower()+nick[nr1:ostLit].upper()
+                            print("TWÓJ NICK ZOSTAŁ ZMIENIONY - TERAZ NAZYWASZ SIĘ",nick)
+                            wybor=0
+                            x=0
+                        else:
+                            print("TWÓJ NICK NIE JEST TAK DŁUGI!")
+                            print("CO CHCESZ ZROBIĆ?")
+                            print("[0] WYJŚCIE DO MENU")
+                            print("[1] PONOWNA EYCJA NICKU")
+                            wybor=input()
+                            wybor=int(wybor)
+                            if wybor==1:
+                                print("PONOWNA EDYCJA NICKU")
+                                wybor=4
+                            else:
+                                print("PRZEJŚCIE DO MENU")
+                                x=0
+                else:
+                    print("BŁĘDNA KOMENA, DANE NIE ZOSTANĄ ZAPISANE. POWRÓT DO MENU!")
+                    x=0;
+            else:
+                print("BŁĘDNA KOMENDA! PRZEKIEROWANIE DO MENU!")
+                x=int(0);
     elif x==2: 
         print("[2] WCZYTAJ GRE")
         print("JAKI MOMENT GRY CHCESZ WCZYTAĆ?")
@@ -185,3 +189,4 @@ while x==0:
     else:
         print("BŁĘDNIE WYBRANA KOMENDA!")
         x=int(0)
+        
