@@ -13,8 +13,7 @@ while x==0:
         print("[1] NOWA GRA\n")
         petlanowagra1=1
         print("WŁAŚNIE STWORZYŁEŚ NOWĄ GRĘ!")
-        print("JESTEŚ MĘŻCZYZNĄ [WYBIERZ M] CZY KOBIETĄ [WYBIERZ K]?")
-        plec=input()
+        plec=input("JESTEŚ MĘŻCZYZNĄ [WYBIERZ M] CZY KOBIETĄ [WYBIERZ K]? ")
         nick=input("PODAJ SWÓJ NICK: ")
         while petlanowagra1==1:
             if plec=="M" or plec=="m":
@@ -26,6 +25,7 @@ while x==0:
             print ("CO CHCESZ DALEJ ZROBIĆ?")
             print("[0] WYJŚCIE")
             print("[1] EDYTOWAĆ NAZWĘ POSTACI")
+            print("[2] ZACZNIJ GRĘ - ZGADYWANIE LICZBY")
             x=input()
             x=int(x)
             if x==0:
@@ -37,8 +37,7 @@ while x==0:
                 print("[2] ZMIANA PSEUDONIMU NA MAŁE LITERY")
                 print("[3] ZMIANA PSEUDONIMU - WYBRANA LITERA JEST DUŻA,RESZTA LITER JEST MAŁA")
                 print("[4] ZMIANA PSEUDONIMU - WYBRANA LITERA JEST MAŁA,RESZTA LITER JEST DUŻA")
-                wybor=input()
-                wybor=int(wybor)
+                wybor=int(input())
                 if wybor==1:
                     nick=nick.upper()
                     print("TWÓJ NICK ZOSTAŁ ZMIENIONY - TERAZ NAZYWASZ SIĘ",nick)
@@ -50,8 +49,8 @@ while x==0:
                     print("POWRÓT DO MENU")
                     x=0
                 elif wybor==3:
-                    nr=input("KTÓRA LITERA TWOJEGO PSEUDONIMU MA ZOSTAĆ ZMIENIONA NA DUŻĄ? LICZYMY OD 0! - ")
-                    nr=int(nr)
+                    nr=input("KTÓRA LITERA TWOJEGO PSEUDONIMU MA ZOSTAĆ ZMIENIONA NA DUŻĄ? - ")
+                    nr=int(nr)-1
                     nr1=nr+1
                     nick=nick.lower()
                     ostLit=(len(nick))
@@ -60,7 +59,7 @@ while x==0:
                 elif wybor==4:
                     while wybor==4:
                         nr=input("KTÓRA LITERA TWOJEGO PSEUDONIMU MA ZOSTAĆ ZMIENIONA NA MAŁĄ? - ")
-                        nr=int(nr)
+                        nr=int(nr)-1
                         if nr<=len(nick):
                             nr1=nr+1
                             nick=nick.upper()
@@ -85,12 +84,60 @@ while x==0:
                 else:
                     print("BŁĘDNA KOMENA, DANE NIE ZOSTANĄ ZAPISANE. POWRÓT DO MENU!")
                     x=0;
+            elif x==2:
+                from random import randint
+                print("CZEŚĆ",nick,"Z POŚRÓD ILU LICZB CHCESZ ZGADYWAĆ? ")
+                zm=int(input())
+               
+                zag = randint(0,zm)
+                for i in range(50):
+                    odp=-1
+                    i=0
+                    print("ZGADNIJ WYLOSOWANĄ LICZBĘ Z ZADANEGO PRZEDZIAŁU, OD 0 DO",zm)
+                    while odp!=zag:
+                        i+=1
+                        odp = int(input("Podaj liczbę: "))
+                        if odp<0 or odp>zm:
+                            print("LICZBA NIE ZNAJDUJE SIĘ W PRZEDZIALE!")
+                        else:
+                            if odp<zag:
+                                print("WYLOSOWANA LICZBA JEST WIEKSZA OD TWOJEJ!")
+                                print("LICZBA PRÓB:",i,"\n")
+                            elif odp>zag:
+                                print("WYLOSOWANA LICZBA JEST MNIEJSZA OD TWOJEJ!")
+                                print("LICZBA PRÓB:",i,"\n")
+                    print("BRAWO,",nick,"ODGADŁEŚ LICZBĘ ZA",i,"RAZEM!")
+                    dec=input("CZY CHCESZ WYJŚĆ Z GRY? T/N ")
+                    if dec=="T" or dec=="t":
+                        print("CHCESZ WYJŚĆ Z GRY!\n")
+                        break
+                    elif dec=="N" or dec=="n":
+                        print("CHCESZ ZOSTAĆ W GRZE!")
+                        zm=int(input("Z POŚRÓD ILU LICZB CHCESZ ZGADYWAĆ? "))
+                        zag = randint(0,zm)
+                    else:
+                        print("NIEROZPONANA DECYZJA - WYJŚCIE Z GRY!\n")
+                        break
             else:
                 print("BŁĘDNA KOMENDA! PRZEKIEROWANIE DO MENU!")
                 x=int(0);
     elif x==2: 
-        print("[2] WCZYTAJ GRE")
-        print("JAKI MOMENT GRY CHCESZ WCZYTAĆ?")
+        print("[2] WCZYTAJ GRĘ\n")
+        moment=input("JAKI MOMENT GRY CHCESZ WCZYTAĆ? ([1/2/3/4/5]")
+        moment=int(moment)
+        if moment<6:
+            print("BRAK ZAPISANYCH MOMENTÓW!")
+            powrot=input("KLIKNIJ [0] ABY POWRÓCIĆ DO MENU ")
+            powrot=int(powrot)
+            if powrot==0:
+                print("POWRÓT DO MENU")
+                x=0
+            else:
+                print("BŁĘDNA KOMENDA! POWRÓT DO MENU.")
+                x=0
+        else:
+            print("BŁĘDNA KOMENDA! POWRÓT DO MENU.")
+            x=0
         print("[1] ULUBIONE")
         print("")
         print("[0] WYJSCIE")
