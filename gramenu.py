@@ -12,13 +12,16 @@ while x==0:
         print("[1] NOWA GRA\n")
         petlanowagra1=1
         print("WŁAŚNIE STWORZYŁEŚ NOWĄ GRĘ!")
-        #print("PODAJ SWOJE IMIĘ")
-        #imie=input()
-        #imie=len(imie)
-        #print(imie.len())
-        #znak=imie[len(imie)-1:len(imie)]
-        #print(znak)
-        plec=input("JESTEŚ MĘŻCZYZNĄ [WYBIERZ M] CZY KOBIETĄ [WYBIERZ K]? ")
+        print("PODAJ SWOJE IMIĘ")
+        imie=str(input())
+        imie1=len(imie)
+        znak=imie[(imie1)-1:(imie1)]
+        if znak=="a" or znak=="A":
+            print("JESTEŚ KOBIETĄ!")
+            plec="K"
+        else:
+            print("JESTEŚ MĘŻCZYZNĄ")
+            plec="M"
         nick=input("PODAJ SWÓJ NICK: ")
         while petlanowagra1==1:
             if plec=="M" or plec=="m":
@@ -32,8 +35,7 @@ while x==0:
             print("[1] EDYTOWAĆ NAZWĘ POSTACI")
             print("[2] ZACZNIJ GRĘ - ZGADYWANIE LICZBY")
             print("[3] ZACZNIJ GRĘ - RYSOWANIE CHOINKI")
-            x=input()
-            x=int(x)
+            x=int(input())
             if x==0:
                 print("WYJŚCIE!\n")
                 petlanowagra1=0
@@ -81,8 +83,7 @@ while x==0:
                             print("CO CHCESZ ZROBIĆ?")
                             print("[0] WYJŚCIE DO MENU")
                             print("[1] PONOWNA EYCJA NICKU")
-                            wybor=input()
-                            wybor=int(wybor)
+                            wybor=int(input())
                             if wybor==1:
                                 print("PONOWNA EDYCJA NICKU")
                                 wybor=4
@@ -171,12 +172,10 @@ while x==0:
                     x=0
     elif x==2: 
         print("[2] WCZYTAJ GRĘ\n")
-        moment=input("JAKI MOMENT GRY CHCESZ WCZYTAĆ? ([1/2/3/4/5]")
-        moment=int(moment)
+        moment=int(input("JAKI MOMENT GRY CHCESZ WCZYTAĆ? ([1/2/3/4/5]"))
         if moment<6:
             print("BRAK ZAPISANYCH MOMENTÓW!")
-            powrot=input("KLIKNIJ [0] ABY POWRÓCIĆ DO MENU ")
-            powrot=int(powrot)
+            powrot=int(input("KLIKNIJ [0] ABY POWRÓCIĆ DO MENU "))
             if powrot==0:
                 print("POWRÓT DO MENU")
                 x=0
@@ -189,19 +188,16 @@ while x==0:
         print("[1] ULUBIONE")
         print("")
         print("[0] WYJSCIE")
-        y=input()
-        y=int(y)
+        y=int(input())
         if y==0:
             print("WYJŚCIE!")
             del y
-            x==0
+            x=0
         elif y==1:
             print("[2.1] ULUBIONE")
-            print("TUTAJ SĄ ZAPISANE TWOJE ULUBIONE MOMENTY Z GRY")
-            print("")
+            print("TUTAJ SĄ ZAPISANE TWOJE ULUBIONE MOMENTY Z GRY\n")
             print("[0] WYJŚCIE")
-            x=input()
-            x=int(x)
+            x=int(input())
             if x==0:
                 print("PRZEKIEROWANIE DO GŁÓWNEGO MENU!")
                 x==0
@@ -219,8 +215,7 @@ while x==0:
             wynik = wynik + 1
             
         print("[0] WYJŚCIE")
-        x=input()
-        x=int(x)
+        x=int(input())
         if x==0:
             print("WYJŚCIE")
         else:
@@ -230,24 +225,21 @@ while x==0:
         print("[4] TWÓRCY")
         print("WSZYSTKO TUTAJ ROBIĘ SAM, NIE BĘDĘ SIĘ ZBĘDNIE ROZPISYWAĆ :)")
         print ("[0] EXIT")
-        x=input()
-        x=int(x)
+        x=int(input())
         if x==0: 
             print("WYJŚCIE DO MENU!")
         else:
             print("COŚ ŹLE CI SIĘ PRZYCISNĘŁO, PRZEKIEROWANIE DO MENU")
-            x=0;
+            x=0
     elif x==5: 
         print("[5] OPCJE")
-        
+        x=0
     elif x==6: 
         print("[6] WYJŚCIE")
         print("CZY CHCESZ OPUŚCIĆ GRĘ? T/N")
-        decyzja=input()
-        decyzja=str(decyzja)
+        decyzja=str(input())
         if decyzja=="T" or decyzja=="t":
             print("DO WIDZENIA!")
-
         elif decyzja=="N" or decyzja=="n":
             print("POWRÓT DO MENU!")
             x=0
