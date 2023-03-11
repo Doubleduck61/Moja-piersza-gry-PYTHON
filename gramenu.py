@@ -5,27 +5,33 @@ while x==0:
     print("[2] WCZYTAJ GRĘ")
     print("[3] NAJLEPSZE WYNIKI")
     print("[4] TWÓRCY")
-    print("[5] CHOINKA")
+    print("[5] OPCJE")
     print("[6] WYJŚCIE\n")
-    x=input("CO WYBIERASZ? ")
-    x=int(x)
+    x=int(input("CO WYBIERASZ? "))
     if x==1:
         print("[1] NOWA GRA\n")
         petlanowagra1=1
         print("WŁAŚNIE STWORZYŁEŚ NOWĄ GRĘ!")
+        #print("PODAJ SWOJE IMIĘ")
+        #imie=input()
+        #imie=len(imie)
+        #print(imie.len())
+        #znak=imie[len(imie)-1:len(imie)]
+        #print(znak)
         plec=input("JESTEŚ MĘŻCZYZNĄ [WYBIERZ M] CZY KOBIETĄ [WYBIERZ K]? ")
         nick=input("PODAJ SWÓJ NICK: ")
         while petlanowagra1==1:
             if plec=="M" or plec=="m":
-                print("WŁAŚNIE STWORZYŁEŚ POSTAĆ O PSEUDONIMIE",nick,"!")
+                print("WŁAŚNIE STWORZYŁEŚ POSTAĆ O PSEUDONIMIE",nick,"!\n")
             elif plec=="K" or plec=="k":
-                print("WŁAŚNIE STWORZYŁAŚ POSTAĆ O PSEUDONIMIE",nick,"!")
+                print("WŁAŚNIE STWORZYŁAŚ POSTAĆ O PSEUDONIMIE",nick,"!\n")
             else:
-                print("UTWORZONO POSTAĆ O PSEUDONIMIE",nick,"!")
+                print("UTWORZONO POSTAĆ O PSEUDONIMIE",nick,"!\n")
             print ("CO CHCESZ DALEJ ZROBIĆ?")
             print("[0] WYJŚCIE")
             print("[1] EDYTOWAĆ NAZWĘ POSTACI")
             print("[2] ZACZNIJ GRĘ - ZGADYWANIE LICZBY")
+            print("[3] ZACZNIJ GRĘ - RYSOWANIE CHOINKI")
             x=input()
             x=int(x)
             if x==0:
@@ -37,6 +43,8 @@ while x==0:
                 print("[2] ZMIANA PSEUDONIMU NA MAŁE LITERY")
                 print("[3] ZMIANA PSEUDONIMU - WYBRANA LITERA JEST DUŻA,RESZTA LITER JEST MAŁA")
                 print("[4] ZMIANA PSEUDONIMU - WYBRANA LITERA JEST MAŁA,RESZTA LITER JEST DUŻA")
+                print("[5] ZMIANA PSEUDONIMU - ZAMIANA LITER DUŻYCH NA MAŁE I ODWROTNIE")
+                print("[6] PONOWNY WYBÓR PSEUDONIMU")
                 wybor=int(input())
                 if wybor==1:
                     nick=nick.upper()
@@ -81,11 +89,23 @@ while x==0:
                             else:
                                 print("PRZEJŚCIE DO MENU")
                                 x=0
+                elif wybor==5:
+                    nick=nick.swapcase()
+                    print("TWÓJ NICK ZOSTAŁ ZMIENIONY - TERAZ NAZYWASZ SIĘ",nick)
+                    wybor=0
+                    x=0
+                elif wybor==6:
+                    print("PODAJ SWÓJ NOWY NICK")
+                    nick=input()
+                    print("TWÓJ NICK ZOSTAŁ ZMIENIONY - TERAZ NAZYWASZ SIĘ",nick)
+                    wybor=0
+                    x=0
                 else:
                     print("BŁĘDNA KOMENA, DANE NIE ZOSTANĄ ZAPISANE. POWRÓT DO MENU!")
-                    x=0;
+                    x=0
             elif x==2:
                 from random import randint
+                print("ZASADY GRY - ZOSTANIESZ POPROSZONY O PODANIE LICZBY, WYZNACZY ONA ZAKRES DLA PROGRAMU. KOMPUTER WYLOSUJE LOSOWO JEDNĄ Z LICZB - TWOIM ZADANIEM JEST ODGADNĄĆ TĄ LICZBĘ. Z KAŻDA PRÓBĄ, KOMPUTER PODPOWIE CI CZY WYBRANA LICZBA JEST WIĘKSZA CZY MNIEJSZA OD TEJ KTÓRĄ MASZ ZGADNĄĆ. PAMIĘTAJ, ABY NIE WYBIERAĆ LICZB Z POZA ZAKRESU!\n")
                 print("CZEŚĆ",nick,"Z POŚRÓD ILU LICZB CHCESZ ZGADYWAĆ? ")
                 zm=int(input())
                
@@ -113,14 +133,42 @@ while x==0:
                         break
                     elif dec=="N" or dec=="n":
                         print("CHCESZ ZOSTAĆ W GRZE!")
-                        zm=int(input("Z POŚRÓD ILU LICZB CHCESZ ZGADYWAĆ? "))
+                        zm=int(input("SPOŚRÓD ILU LICZB CHCESZ ZGADYWAĆ? "))
                         zag = randint(0,zm)
                     else:
                         print("NIEROZPONANA DECYZJA - WYJŚCIE Z GRY!\n")
                         break
-            else:
-                print("BŁĘDNA KOMENDA! PRZEKIEROWANIE DO MENU!")
-                x=int(0);
+            elif x==3:
+                print("[3] DRUKOWANIE CHOINKI")
+                print("TU PO PROSTU WYDRUKUJĘ CHOINKĘ, OK?")
+                ok=input()
+                print("")
+                if ok=="ok" or ok=="OK" or ok=="TAK" or ok=="tak":
+                    ch=int(0)
+                    print("ILE POZIOMÓW MA POSIADAĆ CHOINKA? ")
+                    ch1=input()
+                    print("Z JAKIEGO ZNAKU POINNA BYĆ CHOINKA? ")
+                    znak=input()
+                    znak=str(znak)
+                    ch1=int(ch1)
+                    print("DRUKOWANIE CHOINKI:")
+                    while ch<ch1+1:
+                        print(ch*znak)
+                        ch+=1
+                    print(znak)
+                    print("\nCHOINKA O WYSOKOŚCI",ch1,"ZE ZNAKU",znak,"POWINNA BYĆ NARYSOWANA")
+                    print("CO DALEJ?")
+                    print ("[0] EXIT")
+                    x=input()
+                    x=int(x)
+                    if x==0:
+                        print("WYJŚCIE DO MENU!")
+                    else:
+                        print("COŚ ŹLE CI SIĘ PRZYCISNĘŁO, PRZEKIEROWANIE DO MENU")
+                        x=0
+                else:
+                    print("NIE CHCESZ CHOINKI? TO SPADAJ DO MENU\n")
+                    x=0
     elif x==2: 
         print("[2] WCZYTAJ GRĘ\n")
         moment=input("JAKI MOMENT GRY CHCESZ WCZYTAĆ? ([1/2/3/4/5]")
@@ -190,35 +238,8 @@ while x==0:
             print("COŚ ŹLE CI SIĘ PRZYCISNĘŁO, PRZEKIEROWANIE DO MENU")
             x=0;
     elif x==5: 
-        print("[5] CHOINKA")
-        print("TU PO PROSTU WYDRUKUJĘ CHOINKĘ, OK?")
-        ok=input()
-        print("")
-        if ok=="ok" or ok=="OK" or ok=="TAK" or ok=="tak":
-            ch=int(0)
-            print("ILE POZIOMÓW MA POSIADAĆ CHOINKA? ")
-            ch1=input()
-            print("Z JAKIEGO ZNAKU POINNA BYĆ CHOINKA? ")
-            znak=input()
-            znak=str(znak)
-            ch1=int(ch1)
-            while ch<ch1:
-                print(ch*znak)
-                ch+=1
-            print(znak)
-            print("\nCHOINKA O WYSOKOŚCI",ch1,"ZE ZNAKU",znak,"POWINNA BYĆ NARYSOWANA")
-            print("CO DALEJ?")
-            print ("[0] EXIT")
-            x=input()
-            x=int(x)
-            if x==0:
-                print("WYJŚCIE DO MENU!")
-            else:
-                print("COŚ ŹLE CI SIĘ PRZYCISNĘŁO, PRZEKIEROWANIE DO MENU")
-                x=0
-        else:
-            print("NIE CHCESZ CHOINKI? TO SPADAJ DO MENU\n")
-            x=0
+        print("[5] OPCJE")
+        
     elif x==6: 
         print("[6] WYJŚCIE")
         print("CZY CHCESZ OPUŚCIĆ GRĘ? T/N")
