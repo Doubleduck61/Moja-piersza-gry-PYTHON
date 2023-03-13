@@ -5,7 +5,7 @@ while x==0:
     print("[2] WCZYTAJ GRĘ")
     print("[3] NAJLEPSZE WYNIKI")
     print("[4] TWÓRCY")
-    print("[5] OPCJE")
+    print("[5] CIEKAWOSTKI")
     print("[6] WYJŚCIE\n")
     x=int(input("CO WYBIERASZ? "))
     if x==1:
@@ -256,12 +256,14 @@ while x==0:
             yyy=input("KLIKNIJ DOWOLNY PRZYCISK ABY KONTYNUOWAĆ...\n")
             x=0
     elif x==5: 
-        print("\n[5] OPCJE\n")
+        print("\n[5] CIEKAWOSTKI\n")
         print("[0] WYJŚCIE")
         print("[1] SPRAWDZANIE PIERWSZEGO SŁOWA")
         print("[2] SPRAWDZANIE OSTATNIEGO SŁOWA")
         print("[3] ZLICZANIE OKREŚLONEGO ZNAKU")
-        print("[4] ZASTĘPOWANIE ZNAKU INNYM ZNAKIEM\n")
+        print("[4] ZASTĘPOWANIE ZNAKU INNYM ZNAKIEM")
+        print("[5] SPRADZANIE CZY WE FRAZIE SĄ SAME CYFRY ALBO LITERY")
+        print("[6] SPRAWDZANIE POPRAWNOŚCI NUMERU TELEFONU\n")
         ciek=int(input("CO DOKŁADNIE CHCESZ ZROBIĆ? "))
         if ciek==0:
             print("[0] WYJŚCIE")
@@ -315,8 +317,41 @@ while x==0:
             print(sentencja.replace(senteznak,ZnakDoZmiany))
             yyy=input("KLIKNIJ DOWOLNY PRZYCISK ABY KONTYNUOWAĆ...\n")
             x=0
+        elif ciek==5:
+            print("[5] SPRADZANIE CZY WE FRAZIE SĄ SAME ZNAKI ALBO LITERY\n")
+            print("WPISZ PRZYKŁADOWĄ FRAZĘ (ZDANIE/SŁOWO/MYŚL):")
+            sentencja=input()
+            isdigit=sentencja.isdigit()
+            isalpha=sentencja.isalpha()
+            if isdigit == True:
+                print("\nTWOJA FRAZA ZAWIERA JEDYNIE CYFRY (1,2,3... :)")
+                yyy=input("KLIKNIJ DOWOLNY PRZYCISK ABY KONTYNUOWAĆ...\n")
+            elif isalpha==True:
+                print("\nTWOJA FRAZA ZAIERA JEDYNIE LITERY (A,B,C... :)")
+                yyy=input("KLIKNIJ DOWOLNY PRZYCISK ABY KONTYNUOWAĆ...\n")
+            else:
+                print("\nTWOJA FRAZA TO MIX LITER I CYFR!")
+                yyy=input("KLIKNIJ DOWOLNY PRZYCISK ABY KONTYNUOWAĆ...\n")
+            x=0
+        elif ciek==6:
+            print("[6] SPRAWDZANIE POPRAWNOŚCI NUMERU TELEFONU\n")
+            print("PODAJ NUMER TELEFONU KOMÓRKOEGO BĄDŹ STACJONARNEGO.")
+            print("PODANE NUMERY NIE POWINNY ZAWIERAĆ SPACJI!")
+            print("NP: 510111990 albo 134323409\n")
+            print("WPROWADŹ NUMER")
+            nrTel=input()
+            dlugosc=len(nrTel)
+            poprawnosc=nrTel.isdigit()
+            if dlugosc==9 and poprawnosc==True:
+                print("NUMER TELEFONU JEST POPRAWNY!")
+                yy=input("KLIKNIJ DOWOLNY PRZYCISK ABY KONTYNUOWAĆ...\n")
+            else:
+                print("NUMER TELEFONU NIE JEST POPRANY!")
+                yy=input("KLIKNIJ DOWOLNY PRZYCISK ABY KONTYNUOWAĆ...\n")
+            x=0
+                
         else:
-            print("BŁĘDNA KOMENDA - PRZEKIEROWANIE DO MENU!")
+            print("\nBŁĘDNA KOMENDA - PRZEKIEROWANIE DO MENU!")
             yyy=input("KLIKNIJ DOWOLNY PRZYCISK ABY KONTYNUOWAĆ...\n")
             x=0
     elif x==6: 
