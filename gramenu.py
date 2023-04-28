@@ -1,3 +1,5 @@
+#dorobić funkcje
+
 x=int(0)
 while x==0:
     print("MENU\n")
